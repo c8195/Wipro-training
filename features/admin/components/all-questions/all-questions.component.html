@@ -1,0 +1,89 @@
+<div class="all-questions">
+    <div class="page-header">
+      <h2>All Questions</h2>
+      <div class="header-actions">
+        <select [(ngModel)]="statusFilter" (change)="applyFilters()" class="filter-select">
+          <option value="">All Status</option>
+          <option value="Pending">Pending</option>
+          <option value="Approved">Approved</option>
+          <option value="Rejected">Rejected</option>
+        </select>
+        <button (click)="loadQuestions()" class="refresh-btn">
+          <i class="fas fa-sync"></i>
+          Refresh
+        </button>
+      </div>
+    </div>
+  
+    <!-- Loading -->
+    <div *ngIf="loading" class="loading">
+      <div class="spinner"></div>
+      <p>Loading questions...</p>
+    </div>
+  
+    <!-- Error -->
+    <div *ngIf="error" class="error-message">
+      <i class="fas fa-exclamation-triangle"></i>
+      <p>{{ error }}</p>
+    </div>
+  
+    <!-- Questions Table -->
+    <div *ngIf="!loading && !error" class="questions-table-container">
+      <table class="questions-table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Topic</th>
+            <th>Status</th>
+            <th>Answers</th>
+            <th>Created</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let question of questions" class="question-row">
+            <td class="question-title">{{ question.title }}</td>
+            <td class="question-author">{{ question.user.firstName }} {{ question.user.lastName }}</td>
+            <td class="question-topic">
+              <span class="topic-badge">{{ question.topic }}</span>
+            </td>
+            <td class="question-status">
+              <span class="status-badge" [ngClass]="getStatusClass(question.status)">
+                {{ getStatusText(question.status) }}
+              </span>
+            </td>
+            <td class="question-answers">{{ question.answerCount }}</td>
+            <td class="question-date">{{ question.createdAt | date:'short' }}</td>
+            <td class="question-actions">
+              <button (click)="deleteQuestion(question.id)" 
+                      class="action-btn delete"
+                      [disabled]="processingIds.has(question.id)">
+                <i class="fas fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <!-- Pagination -->
+    <div *ngIf="totalPages > 1" class="pagination">
+      <button (click)="changePage(currentPage - 1)" 
+              [disabled]="currentPage === 1"
+              class="page-btn">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      
+      <span class="page-info">
+        Page {{ currentPage }} of {{ totalPages }}
+      </span>
+      
+      <button (click)="changePage(currentPage + 1)" 
+              [disabled]="currentPage === totalPages"
+              class="page-btn">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+  </div>
+  

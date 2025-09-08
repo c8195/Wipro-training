@@ -1,0 +1,239 @@
+/* Initial Loading Screen */
+.initial-loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bs-body-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease-out;
+  }
+  
+
+
+
+  .app-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  
+    .main-content {
+      flex: 1;
+      background-color: #f8f9fa;
+    }
+  }
+  .loading-content {
+    text-align: center;
+    animation: fadeInUp 1s ease-out;
+  }
+  
+  .loading-logo {
+    animation: pulse 2s infinite;
+  }
+  
+  .loading-spinner {
+    margin: 2rem 0;
+  }
+  
+  /* App Container */
+  .app-container {
+    min-height: 100vh;
+    transition: all 0.3s ease;
+  }
+  
+  main {
+    transition: all 0.3s ease;
+  }
+  
+  main.with-header {
+    padding-top: 0;
+  }
+  
+  /* Scroll to Top Button */
+  .scroll-to-top-btn {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 50px;
+    height: 50px;
+    background: var(--bs-primary);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0.5rem 1rem rgba(var(--bs-primary-rgb), 0.4);
+    cursor: pointer;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    animation: slideInUp 0.5s ease-out;
+  }
+  
+  .scroll-to-top-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0.75rem 1.5rem rgba(var(--bs-primary-rgb), 0.5);
+  }
+  
+  .scroll-to-top-btn:active {
+    transform: translateY(0);
+  }
+  
+  /* Floating Theme Toggle */
+  .floating-theme-toggle {
+    position: fixed;
+    bottom: 5rem;
+    right: 2rem;
+    z-index: 999;
+    animation: slideInUp 0.5s ease-out 0.5s both;
+  }
+  
+  /* Animations */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slideInUp {
+    from {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  /* Dark Mode Adjustments */
+  :root[data-theme="dark"] .initial-loading {
+    background: var(--bs-gray-900);
+  }
+  
+  :root[data-theme="dark"] .scroll-to-top-btn {
+    background: linear-gradient(135deg, var(--bs-primary), var(--bs-info));
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .scroll-to-top-btn {
+      bottom: 1rem;
+      right: 1rem;
+      width: 45px;
+      height: 45px;
+    }
+    
+    .floating-theme-toggle {
+      bottom: 4rem;
+      right: 1rem;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .loading-content h2 {
+      font-size: 1.5rem;
+    }
+    
+    .loading-logo i {
+      font-size: 3rem !important;
+    }
+  }
+  
+  /* Print Styles */
+  @media print {
+    .scroll-to-top-btn,
+    .floating-theme-toggle {
+      display: none !important;
+    }
+  }
+  
+  /* High Performance Mode */
+  @media (prefers-reduced-motion: reduce) {
+    .initial-loading,
+    .scroll-to-top-btn,
+    .floating-theme-toggle {
+      animation: none;
+    }
+    
+    .loading-logo {
+      animation: none;
+    }
+  }
+  
+  /* Container Spacing */
+  .container, .container-fluid {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  @media (min-width: 576px) {
+    .container, .container-fluid {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+  
+  @media (min-width: 992px) {
+    .container, .container-fluid {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+  
+  /* Focus Management */
+  .app-container:focus-within .scroll-to-top-btn {
+    outline: 2px solid var(--bs-primary);
+    outline-offset: 2px;
+  }
+  
+  /* Loading States */
+  .loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(var(--bs-body-bg-rgb), 0.8);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9998;
+  }
+  
+  /* Error Boundaries */
+  .error-boundary {
+    padding: 2rem;
+    text-align: center;
+    background: var(--bs-body-bg);
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .error-boundary-content {
+    max-width: 500px;
+  }

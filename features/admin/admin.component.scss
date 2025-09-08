@@ -1,0 +1,122 @@
+.admin-layout {
+    display: flex;
+    height: 100vh;
+    background: var(--bg-color);
+  }
+  
+  .admin-sidebar {
+    width: 250px;
+    background: var(--card-bg);
+    border-right: 1px solid var(--border-color);
+    flex-shrink: 0;
+  
+    .sidebar-header {
+      padding: 1.5rem;
+      border-bottom: 1px solid var(--border-color);
+      
+      h2 {
+        margin: 0;
+        color: var(--primary-color);
+        font-size: 1.25rem;
+      }
+    }
+  
+    .sidebar-nav {
+      padding: 1rem 0;
+  
+      .nav-item {
+        display: flex;
+        align-items: center;
+        padding: 0.75rem 1.5rem;
+        color: var(--text-color);
+        text-decoration: none;
+        transition: all 0.3s ease;
+  
+        &:hover {
+          background: var(--hover-bg);
+          color: var(--primary-color);
+        }
+  
+        &.active {
+          background: var(--primary-color);
+          color: white;
+          border-right: 3px solid var(--primary-color);
+        }
+  
+        i {
+          margin-right: 0.75rem;
+          width: 20px;
+          text-align: center;
+        }
+      }
+    }
+  }
+  
+  .admin-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  
+  .admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+  
+    h1 {
+      margin: 0;
+      color: var(--text-color);
+      font-size: 1.5rem;
+    }
+  
+    .header-actions {
+      display: flex;
+      gap: 1rem;
+  
+      .theme-toggle-btn,
+      .logout-btn {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1rem;
+        background: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+  
+        &:hover {
+          background: var(--primary-hover);
+        }
+      }
+    }
+  }
+  
+  .admin-content {
+    flex: 1;
+    padding: 2rem;
+    overflow-y: auto;
+  }
+  
+  // Dark mode styles
+  :host-context(.dark-theme) {
+    .admin-sidebar {
+      background: var(--dark-card-bg);
+      border-right-color: var(--dark-border-color);
+  
+      .sidebar-header {
+        border-bottom-color: var(--dark-border-color);
+      }
+    }
+  
+    .admin-header {
+      background: var(--dark-card-bg);
+      border-bottom-color: var(--dark-border-color);
+    }
+  }
+  

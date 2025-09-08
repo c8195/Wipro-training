@@ -1,0 +1,67 @@
+.image-upload-container {
+    .upload-area {
+      border: 2px dashed #dee2e6;
+      border-radius: 8px;
+      padding: 2rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background-color: #f8f9fa;
+      
+      &:hover, &.drag-over {
+        border-color: #3f51b5;
+        background-color: #f3f4ff;
+      }
+      
+      .upload-content {
+        pointer-events: none;
+      }
+      
+      i {
+        opacity: 0.7;
+      }
+    }
+    
+    .selected-files {
+      .file-preview {
+        border: 1px solid #dee2e6;
+        transition: all 0.3s ease;
+        
+        &:hover {
+          border-color: #3f51b5;
+          box-shadow: 0 2px 4px rgba(63, 81, 181, 0.1);
+        }
+        
+        .file-info {
+          min-width: 0; // Allow text truncation
+          
+          .file-name {
+            font-weight: 500;
+          }
+          
+          .file-size {
+            font-size: 0.75rem;
+          }
+        }
+      }
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .image-upload-container {
+      .upload-area {
+        padding: 1.5rem;
+        
+        .upload-content {
+          h5 {
+            font-size: 1.1rem;
+          }
+          
+          p {
+            font-size: 0.9rem;
+          }
+        }
+      }
+    }
+  }
+  

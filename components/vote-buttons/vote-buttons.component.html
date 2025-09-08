@@ -1,0 +1,51 @@
+<div [class]="getVoteContainerClass()">
+    <!-- Upvote Button -->
+    <button
+      [class]="getVoteButtonClass(VoteType.Upvote)"
+      (click)="vote(VoteType.Upvote)"
+      [disabled]="!isAuthenticated() || isVoting"
+      [title]="isAuthenticated() ? 'Upvote this ' + (questionId ? 'question' : 'answer') : 'Login to vote'"
+      type="button">
+      <i class="fas fa-chevron-up vote-icon" 
+         [class.fa-spinner]="isVoting && hasUserVoted(VoteType.Upvote)"
+         [class.fa-spin]="isVoting && hasUserVoted(VoteType.Upvote)"></i>
+      <span class="vote-count upvote-count" *ngIf="orientation === 'horizontal'">
+        {{ voteStats.upVotes }}
+      </span>
+    </button>
+  
+    <!-- Vote Score (for vertical layout) -->
+    <div class="vote-score" *ngIf="orientation === 'vertical'">
+      <span class="net-votes" 
+            [class.positive]="voteStats.netVotes > 0"
+            [class.negative]="voteStats.netVotes < 0"
+            [class.neutral]="voteStats.netVotes === 0">
+        {{ voteStats.netVotes }}
+      </span>
+    </div>
+  
+    <!-- Downvote Button -->
+    <button
+      [class]="getVoteButtonClass(VoteType.Downvote)"
+      (click)="vote(VoteType.Downvote)"
+      [disabled]="!isAuthenticated() || isVoting"
+      [title]="isAuthenticated() ? 'Downvote this ' + (questionId ? 'question' : 'answer') : 'Login to vote'"
+      type="button">
+      <i class="fas fa-chevron-down vote-icon"
+         [class.fa-spinner]="isVoting && hasUserVoted(VoteType.Downvote)"
+         [class.fa-spin]="isVoting && hasUserVoted(VoteType.Downvote)"></i>
+      <span class="vote-count downvote-count" *ngIf="orientation === 'horizontal'">
+        {{ voteStats.downVotes }}
+      </span>
+    </button>
+  
+    <!-- Net Score (for horizontal layout) -->
+    <div class="vote-summary" *ngIf="orientation === 'horizontal'">
+      <span class="net-votes"
+            [class.positive]="voteStats.netVotes > 0"
+            [class.negative]="voteStats.netVotes < 0"
+            [class.neutral]="voteStats.netVotes === 0">
+        {{ voteStats.netVotes > 0 ? '+' : '' }}{{ voteStats.netVotes }}
+      </span>
+    </div>
+  </div>

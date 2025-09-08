@@ -1,0 +1,33 @@
+<div class="confirm-dialog-content">
+   
+      <div class="dialog-icon text-center mb-3">
+        <i class="fas fa-3x" 
+           [ngClass]="{
+             'fa-info-circle text-primary': data.type === 'info',
+             'fa-exclamation-triangle text-warning': data.type === 'warning',
+             'fa-exclamation-circle text-danger': data.type === 'danger'
+           }"></i>
+      </div>
+      
+      <h4 class="text-center mb-3">{{data.title}}</h4>
+      <p class="text-center text-muted">{{data.message}}</p>
+  
+    
+    <mat-dialog-actions align="center">
+      <button type="button" 
+              class="btn btn-outline-secondary me-2" 
+              (click)="onCancel()">
+        {{data.cancelText}}
+      </button>
+      <button type="button" 
+              class="btn"
+              [ngClass]="{
+                'btn-primary': data.type === 'info',
+                'btn-warning': data.type === 'warning',
+                'btn-danger': data.type === 'danger'
+              }"
+              (click)="onConfirm()">
+        {{data.confirmText}}
+      </button>
+    </mat-dialog-actions>
+  </div>

@@ -1,0 +1,195 @@
+/* src/app/shared/components/user-avatar/user-avatar.component.css */
+.avatar-container {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.layout-vertical {
+  flex-direction: column;
+  text-align: center;
+  gap: 0.5rem;
+}
+
+.layout-horizontal {
+  flex-direction: row;
+  text-align: left;
+}
+
+.avatar-wrapper {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.user-avatar {
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 3px solid rgba(var(--bs-primary-rgb), 0.2);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.avatar-clickable {
+  cursor: pointer;
+}
+
+.avatar-clickable:hover {
+  transform: scale(1.05);
+  border-color: var(--bs-primary);
+  box-shadow: 0 0 20px rgba(var(--bs-primary-rgb), 0.3);
+}
+
+/* Size variants */
+.avatar-xs {
+  width: 24px;
+  height: 24px;
+  border-width: 2px;
+}
+
+.avatar-sm {
+  width: 32px;
+  height: 32px;
+  border-width: 2px;
+}
+
+.avatar-md {
+  width: 48px;
+  height: 48px;
+  border-width: 3px;
+}
+
+.avatar-lg {
+  width: 64px;
+  height: 64px;
+  border-width: 3px;
+}
+
+.avatar-xl {
+  width: 96px;
+  height: 96px;
+  border-width: 4px;
+}
+
+.avatar-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatar-initials {
+  font-weight: 700;
+  color: white;
+  font-size: 0.7em;
+  user-select: none;
+}
+
+.avatar-xs .avatar-initials { font-size: 0.6em; }
+.avatar-sm .avatar-initials { font-size: 0.65em; }
+.avatar-md .avatar-initials { font-size: 0.7em; }
+.avatar-lg .avatar-initials { font-size: 0.8em; }
+.avatar-xl .avatar-initials { font-size: 1em; }
+
+/* Online Status */
+.online-status {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid var(--bs-body-bg);
+}
+
+.online-status.online {
+  background-color: #28a745;
+  box-shadow: 0 0 8px rgba(40, 167, 69, 0.5);
+}
+
+.online-status.offline {
+  background-color: #6c757d;
+}
+
+.avatar-xs .online-status,
+.avatar-sm .online-status {
+  width: 8px;
+  height: 8px;
+  border-width: 1px;
+}
+
+.avatar-lg .online-status,
+.avatar-xl .online-status {
+  width: 16px;
+  height: 16px;
+  border-width: 3px;
+}
+
+/* User Information */
+.user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 0;
+}
+
+.layout-vertical .user-info {
+  align-items: center;
+}
+
+.user-name {
+  font-weight: 600;
+  color: var(--bs-body-color);
+  font-size: 0.9rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.size-xs .user-name,
+.size-sm .user-name {
+  font-size: 0.8rem;
+}
+
+.size-lg .user-name,
+.size-xl .user-name {
+  font-size: 1rem;
+}
+
+.user-reputation {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.user-role {
+  font-size: 0.7rem;
+}
+
+.user-role .badge {
+  font-size: 0.65rem;
+  padding: 0.25rem 0.5rem;
+}
+
+.user-location {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.75rem;
+}
+
+/* Dark mode adjustments */
+:root[data-theme="dark"] .user-avatar {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+:root[data-theme="dark"] .avatar-clickable:hover {
+  border-color: var(--bs-primary);
+}
+
+:root[data-theme="dark"] .online-status {
+  border-color: var(--bs-dark);
+}

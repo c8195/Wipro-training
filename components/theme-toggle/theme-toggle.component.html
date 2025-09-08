@@ -1,0 +1,53 @@
+<div class="theme-toggle-container">
+   
+    <button 
+      class="btn btn-outline-secondary theme-toggle-btn"
+      (click)="toggleTheme()"
+      [title]="getThemeLabel()"
+      type="button">
+      <i [class]="getThemeIcon()"></i>
+      <span class="ms-2 d-none d-md-inline">{{ getThemeLabel() }}</span>
+    </button>
+  
+
+    <div class="dropdown d-none d-lg-inline">
+      <button 
+        class="btn btn-outline-secondary dropdown-toggle theme-dropdown-btn" 
+        type="button" 
+        id="themeDropdown" 
+        data-bs-toggle="dropdown" 
+        aria-expanded="false">
+        <i [class]="getThemeIcon()"></i>
+        <span class="ms-2">Theme</span>
+      </button>
+      <ul class="dropdown-menu dropdown-menu-end theme-dropdown">
+        <li>
+          <button 
+            class="dropdown-item theme-option"
+            [class.active]="currentTheme === 'light'"
+            (click)="setTheme('light')">
+            <i class="fas fa-sun me-2"></i>Light Mode
+            <i class="fas fa-check ms-auto" *ngIf="currentTheme === 'light'"></i>
+          </button>
+        </li>
+        <li>
+          <button 
+            class="dropdown-item theme-option"
+            [class.active]="currentTheme === 'dark'"
+            (click)="setTheme('dark')">
+            <i class="fas fa-moon me-2"></i>Dark Mode
+            <i class="fas fa-check ms-auto" *ngIf="currentTheme === 'dark'"></i>
+          </button>
+        </li>
+        <li>
+          <button 
+            class="dropdown-item theme-option"
+            [class.active]="currentTheme === 'auto'"
+            (click)="setTheme('auto')">
+            <i class="fas fa-adjust me-2"></i>Auto Mode
+            <i class="fas fa-check ms-auto" *ngIf="currentTheme === 'auto'"></i>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>

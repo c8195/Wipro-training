@@ -1,0 +1,103 @@
+<div class="pending-questions">
+    <div class="page-header">
+      <h2>Pending Questions</h2>
+      <button (click)="loadQuestions()" class="refresh-btn">
+        <i class="fas fa-sync"></i>
+        Refresh
+      </button>
+    </div>
+  
+    <!-- Loading -->
+    <div *ngIf="loading" class="loading">
+      <div class="spinner"></div>
+      <p>Loading pending questions...</p>
+    </div>
+  
+    <!-- Error -->
+    <div *ngIf="error" class="error-message">
+      <i class="fas fa-exclamation-triangle"></i>
+      <p>{{ error }}</p>
+    </div>
+  
+    <!-- No Questions -->
+    <div *ngIf="!loading && !error && questions.length === 0" class="no-data">
+      <i class="fas fa-inbox"></i>
+      <h3>No Pending Questions</h3>
+      <p>All questions have been reviewed!</p>
+    </div>
+  
+    <!-- Questions List -->
+    <div *ngIf="!loading && !error && questions.length > 0" class="questions-list">
+      <div *ngFor="let question of questions" class="question-card">
+        <div class="question-header">
+          <h3>{{ question.title }}</h3>
+          <span class="topic-badge">{{ question.topic }}</span>
+        </div>
+        
+        <div class="question-meta">
+          <span class="author">
+            <i class="fas fa-user"></i>
+            {{ question.user.firstName }} {{ question.user.lastName }}
+          </span>
+          <span class="date">
+            <i class="fas fa-clock"></i>
+            {{ question.createdAt | date:'medium' }}
+          </span>
+        </div>
+  
+        <div class="question-content" [innerHTML]="question.content"></div>
+  
+        <!-- Images -->
+        <div *ngIf="question.images?.length" class="question-images">
+          <h5>Attachments ({{ question.images.length }})</h5>
+          <div class="images-grid">
+            <img *ngFor="let image of question.images" 
+                 [src]="getImageUrl(image.fileName)" 
+                 [alt]="image.fileName"
+                 class="attachment-image">
+          </div>
+        </div>
+  
+        <div class="question-actions">
+          <button (click)="approveQuestion(question.id)" 
+                  class="action-btn approve" 
+                  [disabled]="processingIds.has(question.id)">
+            <i class="fas fa-check"></i>
+            {{ processingIds.has(question.id) ? 'Processing...' : 'Approve' }}
+          </button>
+          <button (click)="rejectQuestion(question.id)" 
+                  class="action-btn reject"
+                  [disabled]="processingIds.has(question.id)">
+            <i class="fas fa-times"></i>
+            {{ processingIds.has(question.id) ? 'Processing...' : 'Reject' }}
+          </button>
+          <button (click)="deleteQuestion(question.id)" 
+                  class="action-btn delete"
+                  [disabled]="processingIds.has(question.id)">
+            <i class="fas fa-trash"></i>
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Pagination -->
+    <div *ngIf="totalPages > 1" class="pagination">
+      <button (click)="changePage(currentPage - 1)" 
+              [disabled]="currentPage === 1"
+              class="page-btn">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      
+      <span class="page-info">
+        Page {{ currentPage }} of {{ totalPages }}
+      </span>
+      
+      <button (click)="changePage(currentPage + 1)" 
+              [disabled]="currentPage === totalPages"
+              class="page-btn">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+  </div>
+  

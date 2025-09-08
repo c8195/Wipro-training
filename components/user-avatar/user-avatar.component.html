@@ -1,0 +1,41 @@
+<div [class]="getContainerClass()">
+  <!-- Avatar Image/Initials -->
+  <div class="avatar-wrapper">
+    <div [class]="getAvatarClass()" 
+         [style.background-color]="!avatarUrl ? backgroundColor : 'transparent'">
+      <img *ngIf="avatarUrl" 
+           [src]="avatarUrl" 
+           [alt]="getUserDisplayName()"
+           class="avatar-image"
+           loading="lazy"
+           (error)="onImageError()">
+      <span *ngIf="!avatarUrl" class="avatar-initials">{{ initials }}</span>
+    </div>
+    
+    <!-- Online Status Indicator -->
+    <div *ngIf="showOnlineStatus" 
+         class="online-status"
+         [class.online]="user?.isOnline"
+         [class.offline]="!user?.isOnline">
+    </div>
+  </div>
+
+  <!-- User Information -->
+  <div *ngIf="showName || showReputation || showRole" class="user-info">
+    <!-- User Name -->
+    <div *ngIf="showName" class="user-name">
+      {{ getUserDisplayName() }}
+    </div>
+
+    <!-- User Role -->
+    <div *ngIf="showRole && getUserRole() !== 'Member'" class="user-role">
+      <span [class]="getRoleClass()">{{ getUserRole() }}</span>
+    </div>
+
+    <!-- Reputation -->
+    <div *ngIf="showReputation && user?.reputation" class="user-reputation">
+      <i [class]="getReputationIcon() + ' ' + getReputationColor()"></i>
+      <span [class]="getReputationColor()">{{ user.reputation }}</span>
+    </div>
+  </div>
+</div>

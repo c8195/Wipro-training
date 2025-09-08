@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DoConnect.API</name>
+    </assembly>
+    <members>
+        <member name="T:DoConnect.API.Migrations.FixUserProfileRelation">
+            <inheritdoc />
+        </member>
+        <member name="M:DoConnect.API.Migrations.FixUserProfileRelation.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:DoConnect.API.Migrations.FixUserProfileRelation.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:DoConnect.API.Migrations.FixUserProfileRelation.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

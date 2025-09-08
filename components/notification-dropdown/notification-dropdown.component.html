@@ -1,0 +1,41 @@
+<div class="notification-dropdown" [class.open]="isOpen" >
+    <button class="notification-trigger" (click)="toggleDropdown()">
+      <i class="fas fa-bell"></i>
+      <span *ngIf="unreadCount > 0" class="notification-badge">{{ unreadCount }}</span>
+    </button>
+  
+    <div *ngIf="isOpen" class="notification-panel" style="background-color: lightblue; color: black">
+      <div class="notification-header">
+        <h4 style="color: red;">Notifications</h4>
+        <button *ngIf="unreadCount > 0" (click)="markAllAsRead()" class="mark-all-read">
+          Mark all as read
+        </button>
+      </div>
+  
+      <div class="notification-list">
+        <div *ngIf="notifications.length === 0" class="no-notifications">
+          <i class="fas fa-bell-slash"></i>
+          <p>No notifications yet</p>
+        </div>
+  
+        <div *ngFor="let notification of notifications" 
+             class="notification-item"
+             [class.unread]="!notification.isRead"
+             (click)="markAsRead(notification)">
+          <div class="notification-content">
+            <h5>{{ notification.title }}</h5>
+            <p>{{ notification.message }}</p>
+            <span class="notification-time">{{ notification.createdAt | date:'short' }}</span>
+          </div>
+          <div *ngIf="!notification.isRead" class="unread-indicator"></div>
+        </div>
+      </div>
+  
+      <div class="notification-footer">
+        <a routerLink="/notifications" (click)="closeDropdown()">View all notifications</a>
+      </div>
+    </div>
+  </div>
+  
+  <div *ngIf="isOpen" class="notification-overlay" (click)="closeDropdown()"></div>
+  
