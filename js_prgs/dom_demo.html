@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DOM Example</title>
+</head>
+<body>
+  <h1 id="title">Hello, DOM!</h1>
+  <button onclick="changeText()">Click Me</button>
+
+  <script>
+    function changeText() {
+      const heading = document.getElementById("title");
+      heading.textContent = "You clicked the button!";
+    }
+  </script>
+</body>
+</html>

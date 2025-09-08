@@ -1,0 +1,20 @@
+Day 19 discussion 
+
+HTML       -----> Tim Berners-Lee 
+CSS        -----> Håkon Wium Lie  
+Bootstrap  -----> Mark Otto and Jacob Thornton  
+Typescript -----> Anders Hejlsberg  
+Angular    -----> Misko Hevery  
+React Js   -----> Jordan Walke
+js----Brendan Eich
+
+Exercises :
+1. create components
+    customer
+    orders
+    category
+2. create module login
+    refer customer component in the login module  
+    refer orders component in the login module  
+    refer category component in the login module  
+    

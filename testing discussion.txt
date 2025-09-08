@@ -1,0 +1,26 @@
+Testing 
+
+SDLC 
+  testing 
+  frameworks : Nunit, Xunit, MS Test ...........
+
+Devops : 
+ testing frameworks : 
+
+unit testing --- is a software testing method that focusses on verifying the 
+correctness of indidividual components or "units" of an application in isolation. 
+
+A unit is typically the smallest testable part of a software system, such as 
+function, method, modules, class......
+
+
+Benefits : 
+1. early detection issues 
+2. improved code quality
+3. increased confidence 
+4. better documentation 
+5. faster development
+6. reduced time and cost 
+
+Disadvantages : 
+

@@ -1,0 +1,56 @@
+Ado.net discussion
+
+Day 29
+
+Activex data object.net 
+   application ====> database 
+
+types : 
+1. connected
+      application ====> database 
+2. disconnected
+	 application ====>  dataset  ==> database 
+
+mysql, plsql, mongodb, oracle, db2..............
+each and every database --specified namespaces
+include specific namespaces 
+
+Sql pillar classes : 
+1. SqlConnection  : for the connection
+
+2. SqlDataReader  : retrieve data from sql table 
+
+3. SqlDataAdapter : store the data in Dataset and then stores in Database 
+
+4. SqlCommand     : to issue the SQL Command 
+
+Dataset : 
+   data table
+            datarow, datacolumn, constraint
+
+
+
+open the terminal : 
+
+1.   dotnet add package Microsoft.Data
+2.   dotnet add package Microsoft.Data.SqlClient 
+
+methods to execute
+1. executeNonQuery() ===> insert, delete, update
+2. executeReader()   ===> retrieve all the records
+       Read()--read all the records 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

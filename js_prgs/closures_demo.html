@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Closures demo</title>
+</head>
+<body>
+    <script>
+function createTimers() 
+{
+  for (let i = 1; i <= 3; i++) 
+  {
+    setTimeout(function () {
+      console.log(`Timer ${i}`);}, i * 1000);
+  }
+}
+
+createTimers();
+// Output: Timer 1, Timer 2, Timer 3 (each one second apart)
+//=======================================================================
+//private variables 
+function counter() {
+  let count = 0;
+
+  return function () {
+    count++;
+    return count;
+  };
+}
+
+const increment = counter();
+console.log(increment()); // 1
+console.log(increment()); // 2
+console.log(increment()); // 3
+        
+        
+        
+    
+    </script>
+</body>
+</html>

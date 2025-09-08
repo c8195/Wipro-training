@@ -1,0 +1,86 @@
+Javascript :
+--object oriented scripting language
+- class, objects
+
+variables :
+   declaring the variables : var  or without var 
+
+var i=10
+
+i=10      integer
+i=10.12   float
+i='a'    character
+i="anita"  string 
+i=2342.23423  double 
+
+conditional statements : if(), if...else,  if...else if.....
+loops : for , while, do_while
+arrays : collection of similar types of data 
+
+operators : 
+1. arithemetic operators + - * / %
+2. relational operators  <  >  <=  >=  <>  !=
+3. comparison operators ==
+4. ===strict equality comparison operator 
+5. = assignment operator 
+6. logical operators &&  ||   !
+
+
+datatypes
+display the datas :
+   document.getElementById......
+   console.log
+varieties of js libraries are present 
+reactjs, ember js, node js, express js, knockout js, next js, vue js, angular js....
+
+=============================================================================================
+Type conversions : 
+
+Type conversion in JavaScript refers to the process of changing a value from one data type to another. This can happen either automatically (implicit conversion or coercion) or manually (explicit conversion or type casting). 
+
+Implicit Type Conversion (Coercion):
+JavaScript automatically converts data types in certain situations, such as:
+
+Arithmetic operations:
+When performing operations like addition, subtraction, multiplication, or division with operands of different types, JavaScript may convert one or both operands to a compatible type. For example, '5' - 2 will convert '5' to a number before subtraction.
+
+Comparison operations:
+When comparing values of different types using operators like == (loose equality), JavaScript attempts to convert them to a common type for comparison.
+
+Boolean contexts:
+Values used in if statements, logical operators (&&, ||, !), or other contexts expecting a boolean will be coerced to true or false. Falsy values include 0, "" (empty string), null, undefined, and NaN. All other values are truthy.
+
+
+Explicit Type Conversion (Type Casting):
+Developers can explicitly convert values using built-in functions or operators:
+
+To Number:
+Number(value): Converts value to a number.
+parseInt(string, radix): Parses a string and returns an integer. radix specifies the base of the number (e.g., 10 for decimal).
+parseFloat(string): Parses a string and returns a floating-point number.
+
+To String:
+String(value): Converts value to a string.
+value.toString(): Most data types have a toString() method.
+
+To Boolean:
+Boolean(value): Converts value to a boolean.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

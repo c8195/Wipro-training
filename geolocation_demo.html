@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HTML5 Geolocation Example</title>
+</head>
+<body>
+
+  <h2>Find My Location</h2>
+  <button onclick="getLocation()">Get Location</button>
+  <p id="output"></p>
+
+  <script>
+    const output = document.getElementById("output");
+
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition, showError);
+      } else {
+        output.innerHTML = "Geolocation is not supported by this browser.";
+      }
+    }
+
+    function showPosition(position) {
+      output.innerHTML = 
+        "Latitude: " + position.coords.latitude + "<br>" +
+        "Longitude: " + position.coords.longitude;
+    }
+
+    function showError(error) {
+      switch(error.code) {
+        case error.PERMISSION_DENIED:
+          output.innerHTML = "User denied the request for Geolocation.";
+          break;
+        case error.POSITION_UNAVAILABLE:
+          output.innerHTML = "Location information is unavailable.";
+          break;
+        case error.TIMEOUT:
+          output.innerHTML = "The request to get user location timed out.";
+          break;
+        case error.UNKNOWN_ERROR:
+          output.innerHTML = "An unknown error occurred.";
+          break;
+      }
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HTML5 Validation Example</title>
+  <style>
+    label { display: block; margin-top: 10px; }
+    input:invalid { border-color: red; }
+    input:valid { border-color: green; }
+  </style>
+</head>
+<body>
+  <h2>Registration Form</h2>
+  <form>
+    <!-- Name (Required) -->
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required />
+
+    <!-- Age (Range) -->
+    <label for="age">Age (18–100):</label>
+    <input type="number" id="age" name="age" min="18" max="100" required />
+
+    <!-- Email (Format) -->
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required />
+
+    <!-- Password (Min Length) -->
+    <label for="password">Password (min 6 characters):</label>
+    <input type="password" id="password" name="password" minlength="6" required />
+
+    <!-- Confirm Password (Pattern match) -->
+    <label for="confirm">Confirm Password:</label>
+    <input type="password" id="confirm" name="confirm" pattern=".{6,}" required title="Must match password length" />
+
+    <!-- Phone (Pattern) -->
+    <label for="phone">Phone (10 digits):</label>
+    <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required title="Enter 10-digit phone number" />
+
+    <!-- Submit -->
+    <br><br>
+    <button type="submit">Submit</button>
+  </form>
+</body>
+</html>

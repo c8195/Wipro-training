@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Json demo</title>
+</head>
+<body>
+    <script>
+    // JSON string
+let jsonString = '{"name":"Alice","age":25}';
+        
+// Parse to object
+let obj = JSON.parse(jsonString);
+
+// Access properties
+console.log(obj.name); // Output: Alice
+
+// Convert object to JSON string
+let newJson = JSON.stringify(obj);
+console.log(newJson); // Output: {"name":"Alice","age":25}
+
+    
+    </script>
+</body>
+</html>

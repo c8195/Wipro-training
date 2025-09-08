@@ -1,0 +1,44 @@
+Day 32 discussion
+
+EF core 
+
+code first approach steps 
+1. install ef core
+         dotnet ef update --global dotnet -ef
+
+2. dotnet ef 
+   shows all info about ef core 
+   version.....
+3. install packages
+        microsoft.entityframeworkcore. design, tools, sqlserver
+
+4. create entities(classes), dbcontext, connection string
+
+5. migrations 
+
+----------------------------------------------------------------
+database first approach steps 
+1.  install packages
+        microsoft.entityframeworkcore. design, tools, sqlserver
+2.  create context (blank)
+
+3. connection string 
+
+4. make sure DB exists in the SQL Server, so that you can generate entities 
+
+5. dotnet ef dbcontext scaffold server.... 
+===============================================================
+
+Repository pattern 
+
+
+
+
+
+
+
+
+
+
+
+

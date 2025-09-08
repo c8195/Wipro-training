@@ -1,0 +1,59 @@
+Day 28 discussion
+==========================================================================
+Ecommerce website : 
+
+plan : 
+
+4.30 hrs 
+
+login page 
+     user name : ....
+     password  : ....
+           submit(sessions )  ----------------------> home page 
+
+home page 
+       
+                                     welcome : username (sessions)
+
+product 1       product 2       product 3     product 4   
+  image         image           image         image 
+
+   Buy           Buy             Buy           Buy
+
+
+Add to cart : 
+   add the favourite products to the cart 
+   - modify the products --like quantity 
+   - delete the products 
+
+Place the order :
+    order page 
+        details 
+
+Billing page 
+   display bill 
+
+key notes : 
+1. razor syntaxes
+2. sessions
+3. filters ??? ( creating a log for the user name) 
+
+best practices : 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

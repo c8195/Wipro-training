@@ -1,0 +1,6 @@
+Day 20 discussion
+
+Practical exercises: Applying directives and pipes in a real-world example
+
+
+create a student dashboard which contains all the datas about students. 

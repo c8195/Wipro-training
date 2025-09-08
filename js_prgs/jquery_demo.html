@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+<title>The jQuery Example</title>
+<script src="https://www.tutorialspoint.com/jquery/jquery-3.6.0.js"></script>
+<script>
+   $(document).ready(function() {
+      $("div").click(function(){
+         $(this).hide(1000);
+      });
+   });
+</script>
+<style>
+   div{ margin:10px;padding:12px; border:2px solid #666; width:60px; cursor:pointer}
+</style>
+</head>
+<body>
+   <p>Click on any of the squares to see the result:</p>
+
+   <div>Hide Me</div>
+   <div>Hide Me</div>
+   <div>Hide Me</div>
+</body>
+</html>
