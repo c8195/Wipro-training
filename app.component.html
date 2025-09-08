@@ -1,0 +1,44 @@
+<!-- Initial Loading Screen -->
+<div *ngIf="isLoading" class="initial-loading">
+  <div class="loading-content">
+    <div class="loading-logo">
+      <i class="fas fa-comments fa-4x text-primary mb-3"></i>
+      <h2 class="text-primary fw-bold">DoConnect</h2>
+    </div>
+    <div class="loading-spinner">
+      <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;"></div>
+    </div>
+    <p class="text-muted mt-3">Preparing your experience...</p>
+  </div>
+</div>
+
+<!-- Main Application -->
+<div *ngIf="!isLoading" class="app-container d-flex flex-column min-vh-100">
+  <!-- Enhanced Header -->
+  <app-enhanced-header *ngIf="shouldShowHeader()"></app-enhanced-header>
+  
+  <!-- Main Content -->
+  <main class="flex-grow-1" [class.with-header]="shouldShowHeader()">
+    <router-outlet></router-outlet>
+  </main>
+  
+  <app-toast></app-toast>
+
+
+  <!-- Footer -->
+  <app-footer *ngIf="shouldShowFooter()"></app-footer>
+  
+  <!-- Scroll to Top Button -->
+  <button 
+    *ngIf="showScrollToTop"
+    class="scroll-to-top-btn"
+    (click)="scrollToTop()"
+    title="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+  
+  <!-- Theme Toggle Floating Button (Mobile) -->
+  <div class="floating-theme-toggle d-md-none">
+    <app-theme-toggle></app-theme-toggle>
+  </div>
+</div>

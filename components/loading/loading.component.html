@@ -1,0 +1,12 @@
+<div class="d-flex justify-content-center align-items-center py-5">
+  <div class="text-center">
+    <div class="spinner-border text-primary mb-3" 
+         [class.spinner-border-sm]="size === 'sm'"
+         [style.width]="size === 'lg' ? '3rem' : ''"
+         [style.height]="size === 'lg' ? '3rem' : ''"
+         role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <p class="text-muted mb-0" [class.small]="size === 'sm'">{{ message }}</p>
+  </div>
+</div>

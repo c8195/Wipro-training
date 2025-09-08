@@ -1,0 +1,55 @@
+<div class="admin-layout">
+    <!-- Sidebar -->
+    <aside class="admin-sidebar">
+      <div class="sidebar-header">
+        <h2>Admin Panel</h2>
+      </div>
+      <nav class="sidebar-nav">
+        <a routerLink="dashboard" routerLinkActive="active" class="nav-item">
+          <i class="fas fa-tachometer-alt"></i>
+          <span>Dashboard</span>
+        </a>
+        <a routerLink="pending-questions" routerLinkActive="active" class="nav-item">
+          <i class="fas fa-question-circle"></i>
+          <span>Pending Questions</span>
+        </a>
+        <a routerLink="pending-answers" routerLinkActive="active" class="nav-item">
+          <i class="fas fa-comment-dots"></i>
+          <span>Pending Answers</span>
+        </a>
+        <a routerLink="all-questions" routerLinkActive="active" class="nav-item">
+          <i class="fas fa-list"></i>
+          <span>All Questions</span>
+        </a>
+        <a routerLink="all-answers" routerLinkActive="active" class="nav-item">
+          <i class="fas fa-comments"></i>
+          <span>All Answers</span>
+        </a>
+        <a routerLink="users" routerLinkActive="active" class="nav-item">
+          <i class="fas fa-users"></i>
+          <span>User Management</span>
+        </a>
+      </nav>
+    </aside>
+  
+    <!-- Main Content -->
+    <main class="admin-main">
+      <header class="admin-header">
+        <h1>Admin Dashboard</h1>
+        <div class="header-actions">
+          <button (click)="toggleTheme()" class="theme-toggle-btn">
+            <i [class]="isDarkMode ? 'fas fa-sun' : 'fas fa-moon'"></i>
+          </button>
+          <button (click)="logout()" class="logout-btn">
+            <i class="fas fa-sign-out-alt"></i>
+            Logout
+          </button>
+        </div>
+      </header>
+      
+      <div class="admin-content">
+        <router-outlet></router-outlet>
+      </div>
+    </main>
+  </div>
+  

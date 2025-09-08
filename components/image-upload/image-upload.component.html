@@ -1,0 +1,74 @@
+<div class="image-upload-container">
+    <div class="upload-area" 
+         [class.drag-over]="dragOver"
+         (dragover)="onDragOver($event)"
+         (dragleave)="onDragLeave($event)"
+         (drop)="onDrop($event)">
+      
+      <div class="upload-content" *ngIf="!selectedFiles.length">
+        <i class="fas fa-cloud-upload-alt fa-3x text-primary mb-3"></i>
+        <h5>Upload Images</h5>
+        <p class="text-muted">Drag and drop images here or click to browse</p>
+        <p class="small text-muted">Supported formats: JPEG, PNG, GIF, BMP (Max 5MB each)</p>
+      </div>
+  
+      <input type="file" 
+             class="d-none" 
+             #fileInput
+             [multiple]="multiple"
+             accept="image/*"
+             (change)="onFileSelect($event)">
+      
+      <button type="button" 
+              class="btn btn-outline-primary" 
+              (click)="fileInput.click()"
+              *ngIf="!selectedFiles.length">
+        <i class="fas fa-plus"></i> Select Images
+      </button>
+    </div>
+  
+    <!-- Selected Files Preview -->
+    <div class="selected-files mt-3" *ngIf="selectedFiles.length">
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <h6 class="mb-0">Selected Files ({{selectedFiles.length}})</h6>
+        <div>
+          <button type="button" 
+                  class="btn btn-sm btn-outline-primary me-2" 
+                  (click)="fileInput.click()"
+                  *ngIf="multiple && selectedFiles.length < maxFiles">
+            <i class="fas fa-plus"></i> Add More
+          </button>
+          <button type="button" 
+                  class="btn btn-sm btn-outline-danger" 
+                  (click)="clearFiles()">
+            <i class="fas fa-trash"></i> Clear All
+          </button>
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="col-md-6 col-lg-4 mb-3" *ngFor="let file of selectedFiles; let i = index">
+          <div class="card file-preview">
+            <div class="card-body p-2">
+              <div class="d-flex justify-content-between align-items-start">
+                <div class="file-info flex-grow-1">
+                  <div class="file-name small text-truncate" [title]="file.name">
+                    <i class="fas fa-image text-primary me-1"></i>
+                    {{file.name}}
+                  </div>
+                  <div class="file-size text-muted small">
+                    {{getFileSize(file.size)}}
+                  </div>
+                </div>
+                <button type="button" 
+                        class="btn btn-sm btn-outline-danger ms-2" 
+                        (click)="removeFile(i)">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
