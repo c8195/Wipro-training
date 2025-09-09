@@ -1,0 +1,14 @@
+<div class="product-container">
+    <div class="product-card">
+      <h2 class="product-name">{{ product.name }}</h2>
+      <h4 class="product-price">₹{{ product.price }}</h4>
+  
+      <button class="toggle-button" (click)="toggleDetails()">
+        {{ showDetails ? 'Hide Details' : 'Show Details' }}
+      </button>
+  
+      <div *ngIf="showDetails" class="product-description">
+        <p>{{ product.description }}</p>
+      </div>
+    </div>
+  </div>
