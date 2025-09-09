@@ -1,0 +1,56 @@
+1st one
+
+-- Write your query below 
+CREATE TABLE new_employees (
+    employee_id int primary key,
+    first_name varchar(50) not null,
+    last_name varchar(50) not null,
+    department_id INT,
+    FOREIGN KEY(department_id) REFERENCES departments(department_id)
+);
+INSERT INTO new_employees(employee_id, first_name, last_name, department_id) values(1, 'John', 'Doe', 2),
+    (2, 'Jane', 'Smith', 1),
+    (3, 'Bob', 'Johnson', 3),
+    (4, 'Alice', 'Williams', 1);
+
+DROP TABLE employees;
+ALTER TABLE new_employees RENAME TO employees;
+
+
+
+
+
+2nd one
+
+-- Write your query below
+SELECT 
+    co.country_id AS country_id,
+    co.country AS country,
+    COUNT(r.rental_id) AS rental_count
+FROM 
+    rental r
+JOIN 
+    customer cu ON r.customer_id = cu.customer_id
+JOIN 
+    address a ON cu.address_id = a.address_id
+JOIN 
+    city ci ON a.city_id = ci.city_id
+JOIN 
+    country co ON ci.country_id = co.country_id
+GROUP BY 
+    co.country_id, co.country
+ORDER BY 
+    rental_count DESC
+LIMIT 3;
+
+
+
+
+
+3rd one
+
+-- Write your query below
+SELECT d.DishName, d.Price
+FROM Dishes d
+JOIN Restaurant r ON d.RestaurantId = r.Id
+WHERE r.Name = 'Punjabi Rasoi';

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Advanced Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .form-container {
+            background-color: #ffffff;
+            max-width: 600px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="email"],
+        input[type="number"],
+        input[type="tel"],
+        input[type="file"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            margin-right: 6px;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        .button-group {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        input[type="submit"],
+        input[type="reset"] {
+            width: 48%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover,
+        input[type="reset"]:hover {
+            background-color: #45a049;
+        }
+
+        .note {
+            font-size: 0.9em;
+            color: gray;
+        }
+    </style>
+    <script>
+        function validateForm() {
+            alert("✅ Welcome! Your form has been submitted.");
+            return true;
+        }
+    </script>
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Registration Form</h2>
+
+    <form onsubmit="return validateForm()">
+        <!-- Name (Required) -->
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <!-- Age (Range) -->
+        <label for="age">Age (18-100):</label>
+        <input type="number" id="age" name="age" min="18" max="100" required>
+
+        <!-- Email (Format) -->
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <!-- Password (Min Length) -->
+        <label for="password">Password (min 6 characters):</label>
+        <input type="password" id="password" name="password" minlength="6" required>
+
+        <!-- Confirm Password -->
+        <label for="confirm">Confirm Password:</label>
+        <input type="password" id="confirm" name="confirm" pattern=".{6,}" required title="Must match password length">
+
+        <!-- Phone Number -->
+        <label for="phone">Phone (10 digits):</label>
+        <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required title="Enter 10-digit phone number">
+
+        <!-- City -->
+        <label for="city">City:</label>
+        <input type="text" id="city" name="city" required>
+
+        <!-- State Dropdown -->
+        <label for="state">State:</label>
+        <select id="state" name="state" required>
+            <option value="">Select State</option>
+            <option value="MH">Maharashtra</option>
+            <option value="KA">Karnataka</option>
+            <option value="GJ">Gujarat</option>
+            <option value="DL">Delhi</option>
+            <option value="TN">Tamil Nadu</option>
+        </select>
+
+        <!-- Gender -->
+        <label>Gender:</label>
+        <input type="radio" name="gender" value="Male" required> Male
+        <input type="radio" name="gender" value="Female"> Female
+        <input type="radio" name="gender" value="Other"> Other
+
+        <!-- Terms and Conditions -->
+        <label>
+            <input type="checkbox" name="terms" required> I accept the terms and conditions
+        </label>
+
+        <!-- Address -->
+        <label for="address">Address:</label>
+        <textarea id="address" name="address" rows="4" required></textarea>
+
+        <!-- Profile Image Upload -->
+        <label for="profile">Upload Profile Image (JPEG/PNG):</label>
+        <input type="file" id="profile" name="profile" accept="image/jpeg, image/png" required>
+
+        <!-- Submit and Reset Buttons -->
+        <div class="button-group">
+            <input type="submit" value="Submit">
+            <input type="reset" value="Reset">
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

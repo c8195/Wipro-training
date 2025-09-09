@@ -1,0 +1,8 @@
+C:\Users\rushikesh\Desktop\Day  Submission\SolidPrincipleDemo\SolidPrincipleDemo\bin\Debug\SolidPrincipleDemo.exe.config
+C:\Users\rushikesh\Desktop\Day  Submission\SolidPrincipleDemo\SolidPrincipleDemo\bin\Debug\SolidPrincipleDemo.exe
+C:\Users\rushikesh\Desktop\Day  Submission\SolidPrincipleDemo\SolidPrincipleDemo\bin\Debug\SolidPrincipleDemo.pdb
+C:\Users\rushikesh\Desktop\Day  Submission\SolidPrincipleDemo\SolidPrincipleDemo\obj\Debug\SolidPrincipleDemo.csproj.AssemblyReference.cache
+C:\Users\rushikesh\Desktop\Day  Submission\SolidPrincipleDemo\SolidPrincipleDemo\obj\Debug\SolidPrincipleDemo.csproj.CoreCompileInputs.cache
+C:\Users\rushikesh\Desktop\Day  Submission\SolidPrincipleDemo\SolidPrincipleDemo\obj\Debug\SolidPrincipleDemo.exe
+C:\Users\rushikesh\Desktop\Day  Submission\SolidPrincipleDemo\SolidPrincipleDemo\obj\Debug\SolidPrincipleDemo.pdb
+C:\Users\rushikesh\Desktop\Day  Submission\SolidPrincipleDemo\SolidPrincipleDemo\obj\Debug\SolidPrincipleDemo.exe.config

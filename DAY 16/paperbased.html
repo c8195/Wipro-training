@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Paper-Based Layout Example</title>
+  <style>
+    body {
+      background-color: #e0e0e0;
+      margin: 0;
+      font-family: 'Georgia', serif;
+    }
+    .page {
+      background: white;
+      width: 800px;
+      margin: 40px auto;
+      padding: 40px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+    header, footer {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .content {
+      column-count: 2;
+      column-gap: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <h1>Paper-Based Layout</h1>
+      <p>Inspired by Times OF Now media</p>
+    </header>
+    
+    <div class="content">
+      <p>This is a column-based layout that mimics the appearance of a traditional paper or newspaper layout. The goal is to make web content look like printed content, using fixed dimensions and structured formatting.</p>
+      <p>You can include sections like a title, headers, footers, and divide your content into columns to simulate a print experience on screen.</p>
+    </div>
+    
+    <footer>
+      &copy; 2025 Rushikesh Publications
+    </footer>
+  </div>
+</body>
+</html>
