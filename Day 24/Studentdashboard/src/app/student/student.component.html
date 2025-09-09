@@ -1,0 +1,52 @@
+<div class="container py-4">
+    <h2 class="text-center mb-4 text-primary fw-bold">📚 Student Management Dashboard</h2>
+  
+    <!-- Add / Edit Student Form -->
+    <div class="card shadow-sm mb-4">
+      <div class="card-header bg-primary text-white">
+        {{ editIndex === null ? 'Add New Student' : 'Edit Student' }}
+      </div>
+      <div class="card-body">
+        <form (ngSubmit)="addStudent()" class="row g-3">
+          <div class="col-md-6">
+            <input [(ngModel)]="newStudent.firstName" name="firstName" placeholder="First Name" class="form-control" required>
+          </div>
+          <div class="col-md-6">
+            <input [(ngModel)]="newStudent.lastName" name="lastName" placeholder="Last Name" class="form-control" required>
+          </div>
+          <div class="col-md-6">
+            <input [(ngModel)]="newStudent.city" name="city" placeholder="City" class="form-control" required>
+          </div>
+          <div class="col-md-6">
+            <input [(ngModel)]="newStudent.marks" name="marks" placeholder="Marks" type="number" class="form-control" required>
+          </div>
+          <div class="col-12 text-end">
+            <button class="btn btn-success me-2">{{ editIndex === null ? 'Add Student' : 'Update Student' }}</button>
+            <button type="button" class="btn btn-secondary" (click)="clearForm()">Clear</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  
+    <!-- Student Cards -->
+    <div class="row g-4">
+      <div class="col-md-4" *ngFor="let student of students; let i = index">
+        <div class="card student-card shadow-sm h-100">
+          <div class="card-body">
+            <h5 class="card-title text-primary fw-bold">{{student.firstName}} {{student.lastName}}</h5>
+            <p class="card-text mb-1"><strong>City:</strong> {{student.city}}</p>
+            <p class="card-text mb-1"><strong>Marks:</strong> {{student.marks}}</p>
+          </div>
+          <div class="card-footer bg-light text-end">
+            <button class="btn btn-sm btn-outline-primary me-2" (click)="editStudent(i)">
+              <i class="bi bi-pencil-square"></i> Edit
+            </button>
+            <button class="btn btn-sm btn-outline-danger" (click)="deleteStudent(i)">
+              <i class="bi bi-trash"></i> Delete
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

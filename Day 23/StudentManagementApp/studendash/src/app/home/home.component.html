@@ -1,0 +1,11 @@
+<h1>Student Management System</h1>
+
+<h3>Display Student List</h3>
+<ul>
+  <li *ngFor="let student of students">{{ student }}</li>
+</ul>
+
+<h3>CRUD Operations</h3>
+<button (click)="addStudent()">Add Student</button>
+<button (click)="modifyStudent()">Modify Student</button>
+<button (click)="deleteStudent()">Delete Student</button>
