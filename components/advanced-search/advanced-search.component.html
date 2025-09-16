@@ -1,0 +1,158 @@
+<div class="advanced-search-container">
+    <form [formGroup]="searchForm" (ngSubmit)="onSearch()" class="search-form">
+      <!-- Main Search Bar -->
+      <div class="search-bar-container">
+        <div class="input-group search-input-group">
+          <span class="input-group-text search-icon">
+            <i class="fas fa-search"></i>
+          </span>
+          <input
+            type="text"
+            class="form-control search-input"
+            formControlName="search"
+            placeholder="Search questions, answers, and topics..."
+            autocomplete="off">
+          <button 
+            type="button"
+            class="btn btn-outline-secondary filter-toggle"
+            (click)="toggleExpanded()"
+            [class.active]="isExpanded"
+            [title]="isExpanded ? 'Hide filters' : 'Show filters'">
+            <i class="fas fa-filter"></i>
+            <span class="d-none d-md-inline ms-1">Filters</span>
+            <span class="badge bg-primary ms-1" *ngIf="getActiveFilterCount() > 0">
+              {{ getActiveFilterCount() }}
+            </span>
+          </button>
+          <button 
+            type="submit" 
+            class="btn btn-primary search-btn"
+            [disabled]="isLoading">
+            <i class="fas fa-search" *ngIf="!isLoading"></i>
+            <i class="fas fa-spinner fa-spin" *ngIf="isLoading"></i>
+            <span class="d-none d-md-inline ms-1">Search</span>
+          </button>
+        </div>
+  
+        <!-- Search Suggestions -->
+        <div class="suggestions-dropdown" *ngIf="showSuggestions">
+          <div class="suggestions-list">
+            <button
+              type="button"
+              class="suggestion-item"
+              *ngFor="let suggestion of suggestions"
+              (click)="selectSuggestion(suggestion)">
+              <i class="fas fa-search me-2 text-muted"></i>
+              {{ suggestion }}
+            </button>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Advanced Filters Panel -->
+      <div class="advanced-filters" [class.expanded]="isExpanded">
+        <div class="row g-3">
+          <!-- Topic Filter -->
+          <div class="col-md-6 col-lg-3">
+            <label class="form-label fw-semibold">
+              <i class="fas fa-tag me-1"></i>Topic
+            </label>
+            <select class="form-select" formControlName="topic">
+              <option value="">All Topics</option>
+              <option value="Technology">Technology</option>
+              <option value="Science">Science</option>
+              <option value="Programming">Programming</option>
+              <option value="Design">Design</option>
+              <option value="Business">Business</option>
+              <option value="General">General</option>
+            </select>
+          </div>
+  
+          <!-- Sort By -->
+          <div class="col-md-6 col-lg-3">
+            <label class="form-label fw-semibold">
+              <i class="fas fa-sort me-1"></i>Sort By
+            </label>
+            <select class="form-select" formControlName="sortBy">
+              <option *ngFor="let option of sortOptions" [value]="option.value">
+                {{ option.label }}
+              </option>
+            </select>
+          </div>
+  
+          <!-- Status Filter -->
+          <div class="col-md-6 col-lg-3">
+            <label class="form-label fw-semibold">
+              <i class="fas fa-check-circle me-1"></i>Status
+            </label>
+            <select class="form-select" formControlName="status">
+              <option *ngFor="let option of statusOptions" [value]="option.value">
+                {{ option.label }}
+              </option>
+            </select>
+          </div>
+  
+          <!-- Date Range -->
+          <div class="col-md-6 col-lg-3">
+            <label class="form-label fw-semibold">
+              <i class="fas fa-calendar me-1"></i>Date Range
+            </label>
+            <select class="form-select" formControlName="dateRange">
+              <option *ngFor="let option of dateRangeOptions" [value]="option.value">
+                {{ option.label }}
+              </option>
+            </select>
+          </div>
+        </div>
+  
+        <!-- Tags Section -->
+        <div class="tags-section mt-3">
+          <label class="form-label fw-semibold">
+            <i class="fas fa-tags me-1"></i>Tags
+          </label>
+          
+          <!-- Selected Tags -->
+          <div class="selected-tags mb-2" *ngIf="searchForm.get('tags')?.value?.length">
+            <span 
+              class="badge bg-primary tag-badge"
+              *ngFor="let tag of searchForm.get('tags')?.value"
+              (click)="removeTag(tag)">
+              {{ tag }}
+              <i class="fas fa-times ms-1"></i>
+            </span>
+          </div>
+  
+          <!-- Popular Tags -->
+          <div class="popular-tags">
+            <small class="text-muted d-block mb-2">Popular tags:</small>
+            <div class="tag-cloud">
+              <button
+                type="button"
+                class="btn btn-outline-secondary btn-sm tag-suggestion"
+                *ngFor="let tag of popularTags"
+                [class.active]="searchForm.get('tags')?.value?.includes(tag)"
+                (click)="addTag(tag)">
+                {{ tag }}
+              </button>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Filter Actions -->
+        <div class="filter-actions mt-3">
+          <button 
+            type="button" 
+            class="btn btn-outline-danger btn-sm"
+            (click)="clearFilters()"
+            *ngIf="hasActiveFilters()">
+            <i class="fas fa-times me-1"></i>Clear Filters
+          </button>
+          <div class="ms-auto">
+            <small class="text-muted">
+              {{ getActiveFilterCount() }} filter{{ getActiveFilterCount() !== 1 ? 's' : '' }} active
+            </small>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>

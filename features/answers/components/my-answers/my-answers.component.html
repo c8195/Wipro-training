@@ -1,0 +1,170 @@
+<div class="container-fluid py-4">
+    <div class="row">
+      <div class="col-12">
+        <!-- Header -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <div>
+            <h2>
+              <i class="fas fa-user-edit text-primary"></i>
+              My Answers
+            </h2>
+            <p class="text-muted mb-0">Track all your answers and their status</p>
+          </div>
+          <a routerLink="/questions" class="btn btn-primary">
+            <i class="fas fa-search"></i> Browse Questions
+          </a>
+        </div>
+  
+        <!-- Loading -->
+        <app-loading *ngIf="loading" message="Loading your answers..."></app-loading>
+  
+        <!-- No Answers -->
+        <div class="text-center py-5" *ngIf="!loading && !answers.length">
+          <i class="fas fa-comment-slash fa-4x text-muted mb-4"></i>
+          <h3>No Answers Yet</h3>
+          <p class="text-muted mb-4">You haven't answered any questions yet. Start by browsing questions and sharing your knowledge!</p>
+          <a routerLink="/questions" class="btn btn-primary btn-lg">
+            <i class="fas fa-search"></i> Browse Questions
+          </a>
+        </div>
+  
+        <!-- Answers List -->
+        <div class="answers-list" *ngIf="!loading && answers.length">
+          <div class="card mb-4 shadow-sm" *ngFor="let answer of answers">
+            <div class="card-body">
+              <!-- Answer Header -->
+              <div class="d-flex justify-content-between align-items-start mb-3">
+                <div class="answer-status">
+                  <span class="badge" [class]="getStatusBadgeClass(answer.status)">
+                    {{getStatusText(answer.status)}}
+                  </span>
+                </div>
+                <div class="dropdown">
+                  <button class="btn btn-sm btn-outline-secondary dropdown-toggle" 
+                          type="button" 
+                          data-bs-toggle="dropdown">
+                    <i class="fas fa-ellipsis-v"></i>
+                  </button>
+                  <ul class="dropdown-menu dropdown-menu-end">
+                    <li>
+                      <a class="dropdown-item" [routerLink]="['/questions', answer.questionId]">
+                        <i class="fas fa-eye"></i> View Question
+                      </a>
+                    </li>
+                    <li>
+                      <button class="dropdown-item" 
+                              [routerLink]="['/answers', answer.id, 'edit']"
+                              *ngIf="answer.status !== 1">
+                        <i class="fas fa-edit"></i> Edit
+                      </button>
+                    </li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li>
+                      <button class="dropdown-item text-danger" (click)="deleteAnswer(answer)">
+                        <i class="fas fa-trash"></i> Delete
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+  
+              <!-- Question Context -->
+              <div class="question-context mb-3 p-3 bg-light rounded">
+                <h6 class="text-primary mb-1">
+                  <i class="fas fa-question-circle"></i>
+                  Question:
+                </h6>
+                <p class="mb-0 text-muted">
+                  This answer was provided for a question. 
+                  <a [routerLink]="['/questions', answer.questionId]" class="text-decoration-none">
+                    View full question context →
+                  </a>
+                </p>
+              </div>
+  
+              <!-- Answer Content -->
+              <div class="answer-content mb-3">
+                <h6 class="text-secondary">Your Answer:</h6>
+                <p class="answer-text">{{answer.content}}</p>
+              </div>
+  
+              <!-- Answer Images -->
+              <div class="answer-images mb-3" *ngIf="answer.images && answer.images.length">
+                <h6 class="text-secondary">Attached Images:</h6>
+                <div class="row">
+                  <div class="col-md-3 col-sm-6 mb-2" *ngFor="let image of answer.images">
+                    <img [src]="'/api/file/' + image.id" 
+                         [alt]="image.fileName"
+                         class="img-fluid rounded shadow-sm"
+                         loading="lazy">
+                  </div>
+                </div>
+              </div>
+  
+              <!-- Answer Footer -->
+              <div class="answer-footer border-top pt-3">
+                <div class="row">
+                  <div class="col-md-8">
+                    <div class="answer-meta">
+                      <small class="text-muted">
+                        <i class="fas fa-clock"></i>
+                        Answered {{answer.createdAt | timeAgo}}
+                        <span *ngIf="answer.updatedAt" class="ms-2">
+                          <i class="fas fa-edit"></i>
+                          Updated {{answer.updatedAt | timeAgo}}
+                        </span>
+                      </small>
+                    </div>
+                  </div>
+                  <div class="col-md-4 text-end">
+                    <div class="answer-actions">
+                      <a [routerLink]="['/questions', answer.questionId]" 
+                         class="btn btn-outline-primary btn-sm me-2">
+                        <i class="fas fa-eye"></i> View Question
+                      </a>
+                      <button class="btn btn-outline-secondary btn-sm"
+                              *ngIf="answer.status !== 1">
+                        <i class="fas fa-edit"></i> Edit
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Stats Summary -->
+        <div class="stats-summary mt-5" *ngIf="!loading && answers.length">
+          <div class="card border-0 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">
+                <i class="fas fa-chart-line text-primary"></i>
+                Your Answers Summary
+              </h5>
+              <div class="row text-center">
+                <div class="col-md-4">
+                  <div class="summary-stat">
+                    <div class="stat-number text-primary">{{answers.length}}</div>
+                    <div class="stat-description">Total Answers</div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="summary-stat">
+                    <div class="stat-number text-success">{{approvedAnswersCount}}</div>
+                    <div class="stat-description">Approved</div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="summary-stat">
+                    <div class="stat-number text-warning">{{pendingAnswersCount}}</div>
+                    <div class="stat-description">Pending</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

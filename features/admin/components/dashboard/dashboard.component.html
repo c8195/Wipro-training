@@ -1,0 +1,119 @@
+<div class="dashboard">
+    <h2>Dashboard Overview</h2>
+  
+    <!-- Loading State -->
+    <div *ngIf="loading" class="loading">
+      <div class="spinner"></div>
+      <p>Loading dashboard stats...</p>
+    </div>
+  
+    <!-- Error State -->
+    <div *ngIf="error" class="error-message">
+      <i class="fas fa-exclamation-triangle"></i>
+      <p>{{ error }}</p>
+      <button (click)="loadStats()" class="retry-btn">Retry</button>
+    </div>
+  
+    <!-- Stats Cards -->
+    <div *ngIf="!loading && !error" class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon users">
+          <i class="fas fa-users"></i>
+        </div>
+        <div class="stat-info">
+          <h3>{{ stats.totalUsers }}</h3>
+          <p>Total Users</p>
+        </div>
+      </div>
+  
+      <div class="stat-card">
+        <div class="stat-icon questions">
+          <i class="fas fa-question-circle"></i>
+        </div>
+        <div class="stat-info">
+          <h3>{{ stats.totalQuestions }}</h3>
+          <p>Total Questions</p>
+        </div>
+      </div>
+  
+      <div class="stat-card">
+        <div class="stat-icon answers">
+          <i class="fas fa-comments"></i>
+        </div>
+        <div class="stat-info">
+          <h3>{{ stats.totalAnswers }}</h3>
+          <p>Total Answers</p>
+        </div>
+      </div>
+  
+      <div class="stat-card">
+        <div class="stat-icon images">
+          <i class="fas fa-images"></i>
+        </div>
+        <div class="stat-info">
+          <h3>{{ stats.totalImages }}</h3>
+          <p>Total Images</p>
+        </div>
+      </div>
+  
+      <div class="stat-card pending">
+        <div class="stat-icon">
+          <i class="fas fa-clock"></i>
+        </div>
+        <div class="stat-info">
+          <h3>{{ stats.pendingQuestions }}</h3>
+          <p>Pending Questions</p>
+        </div>
+      </div>
+  
+      <div class="stat-card pending">
+        <div class="stat-icon">
+          <i class="fas fa-comment-dots"></i>
+        </div>
+        <div class="stat-info">
+          <h3>{{ stats.pendingAnswers }}</h3>
+          <p>Pending Answers</p>
+        </div>
+      </div>
+  
+      <div class="stat-card approved">
+        <div class="stat-icon">
+          <i class="fas fa-check-circle"></i>
+        </div>
+        <div class="stat-info">
+          <h3>{{ stats.approvedQuestions }}</h3>
+          <p>Approved Questions</p>
+        </div>
+      </div>
+  
+      <div class="stat-card approved">
+        <div class="stat-icon">
+          <i class="fas fa-check-double"></i>
+        </div>
+        <div class="stat-info">
+          <h3>{{ stats.approvedAnswers }}</h3>
+          <p>Approved Answers</p>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Quick Actions -->
+    <div *ngIf="!loading && !error" class="quick-actions">
+      <h3>Quick Actions</h3>
+      <div class="action-buttons">
+        <button routerLink="../pending-questions" class="action-btn primary">
+          <i class="fas fa-question-circle"></i>
+          Review Pending Questions
+        </button>
+        <button routerLink="../pending-answers" class="action-btn secondary">
+          <i class="fas fa-comment-dots"></i>
+          Review Pending Answers
+        </button>
+        <button routerLink="../users" class="action-btn tertiary">
+          <i class="fas fa-users"></i>
+          Manage Users
+        </button>
+      </div>
+    </div>
+  </div>
+  
